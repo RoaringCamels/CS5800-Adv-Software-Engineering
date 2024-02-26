@@ -1,0 +1,33 @@
+@startuml classdiagram4
+
+class Folder {
+  - folderName: String
+  - files: List<File>
+  - subFolders: List<Folder>
+
+  + Folder(folderName: String)
+  + getFolderName(): String
+  + setFolderName(folderName: String): void
+  + addFile(file: File): void
+  + addSubFolder(subFolder: Folder): void
+  + delete(): void
+  + print(): void
+}
+
+class File {
+  - fileName: String
+
+  + File(fileName: String)
+  + getFileName(): String
+  + setFileName(fileName: String): void
+  + print(): void
+}
+
+class Driver {
+}
+
+Folder *-- Folder
+Folder *-- File
+
+@enduml
+
