@@ -4,29 +4,25 @@ class CourseDriver{
     + main(args: String[]):void
 }
 
-object Instructor{
+object "<u>instructor1:Instructor</u>" as Instructor{
     name = "isntructor1"
     firstName = "Nima"
     lastName = "Davarpanah"
     officeNum = "3-2636"
 }
 
-object Textbook {
+object "<u>textbook1:Textbook</u>" as Textbook {
     name = "textbook1"
     title = "Clean Code"
     author = "G4G"
     publisher = "Webster"
 }
 
-object Course {
+object "<u>AdvancedSoftwareEngineering:Course</u>" as Course{
     name = "Advanced Software Engineering"
     instructor = instructor1 : Instructor
     textbook = textbook1 : Textbook
 }
-
-CourseDriver --> Instructor: creates
-CourseDriver --> Textbook: creates
-CourseDriver --> Course : creates
 
 Course --o Textbook
 Course --o Instructor

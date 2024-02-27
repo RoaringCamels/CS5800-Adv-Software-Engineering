@@ -43,10 +43,6 @@ class Textbook {
   + setPublisher(publisher: String): void
 }
 
-class Driver {
-  
-}
-
 Course o-- Instructor
 Course o-- Textbook
 

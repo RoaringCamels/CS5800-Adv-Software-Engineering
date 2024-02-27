@@ -23,9 +23,6 @@ class File {
   + print(): void
 }
 
-class Driver {
-}
-
 Folder *-- Folder
 Folder *-- File
 
