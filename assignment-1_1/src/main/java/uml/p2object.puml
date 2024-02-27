@@ -1,0 +1,28 @@
+@startuml polymorphismObjectDiagram
+
+class ShipDriver{
+    + main(args: String[]):void
+}
+
+object "<u>Ship1:Ship</u>" as Ship{
+    name = "Ship1"
+    yearBuilt = "2023"
+}
+
+object "<u>CruiseShip2:CruiseShip</u>" as CruiseShip{
+    name = "Cruise Ship 2"
+    yearBuilt = "1997"
+    maxPassengers = 100
+}
+
+object "<u>CargoShip1:CargoShip</u>" as CargoShip{
+    name = "Cargo Ship 1"
+    yearBuilt = "1730"
+    cargoCapacity = 23
+}
+
+ShipDriver --> Ship: creates
+ShipDriver --> CruiseShip: creates
+ShipDriver --> CargoShip: creates
+
+@enduml

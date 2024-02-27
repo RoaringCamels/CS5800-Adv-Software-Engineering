@@ -30,8 +30,6 @@ class CargoShip {
   + print(): void
 }
 
-class Driver {}
-
 Ship <|-- CruiseShip
 Ship <|-- CargoShip
 

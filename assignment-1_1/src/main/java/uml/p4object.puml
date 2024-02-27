@@ -1,0 +1,80 @@
+@startuml compositionObjectDiagram
+
+class FileDemo{
+    + main(args: String[]):void
+}
+
+object "<u>phpDemo1:Folder</u>" as root {
+    name = "phpDemo1"
+    files = ""
+    subfolders = "Source Files"
+    subfolders = "Include Path"
+    subfolders = "Remote Files"  
+}
+
+object "<u>Source Files:Folder</u>" as sf{
+    name = "Source Files"
+    files = ""
+    subfolders = "phalcon"
+    subfolders = "cache"
+    subfolders = "publicFolder"
+}
+
+object "<u>Include Path:Folder</u>" as ip{
+    name = "Include Path"
+    files = ""
+    subfolders = ""
+}
+
+object "<u>Remote Files:Folder</u>" as rf{
+    name = "Remote Files"
+    files = ""
+    subfolders = ""
+}
+
+object "<u>phalcon:Folder</u>" as phalcon{
+    name = "phalcon"
+    files = ""
+    subfolders = ""
+}
+
+object "<u>cache:Folder</u>" as cache{
+    name = "cache"
+    files = ""
+    subfolders = ""
+}
+
+object "<u>public:Folder</u>" as publicFolder {
+    name = "publicFolder"
+    files = "htcaccess"
+    files = "htrouter"
+    files = "index"
+    subfolders = ""
+}
+
+object "<u>htcaccess:File</u>" as htcaccess{
+    name = "htcaccess"
+}
+
+object "<u>htrouter:File</u>" as htrouter{
+    name = "htrouter.php"
+}
+
+object "<u>index:File</u>" as index{
+    name = "index.html"
+}
+
+root *-- sf
+root *-- ip
+root *-- rf
+
+sf *-- phalcon
+sf *-- cache
+sf *-- publicFolder
+
+publicFolder *-- htcaccess
+publicFolder *-- htrouter
+publicFolder *-- index
+
+@enduml
+

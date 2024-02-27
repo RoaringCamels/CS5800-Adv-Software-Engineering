@@ -1,0 +1,34 @@
+@startuml aggregationObjectDiagram
+
+class CourseDriver{
+    + main(args: String[]):void
+}
+
+object Instructor{
+    name = "isntructor1"
+    firstName = "Nima"
+    lastName = "Davarpanah"
+    officeNum = "3-2636"
+}
+
+object Textbook {
+    name = "textbook1"
+    title = "Clean Code"
+    author = "G4G"
+    publisher = "Webster"
+}
+
+object Course {
+    name = "Advanced Software Engineering"
+    instructor = instructor1 : Instructor
+    textbook = textbook1 : Textbook
+}
+
+CourseDriver --> Instructor: creates
+CourseDriver --> Textbook: creates
+CourseDriver --> Course : creates
+
+Course --o Textbook
+Course --o Instructor
+
+@enduml
