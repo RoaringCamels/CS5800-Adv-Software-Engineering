@@ -1,6 +1,4 @@
 package builderpattern;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PizzaBuilder{
     private String pizzaChain;
