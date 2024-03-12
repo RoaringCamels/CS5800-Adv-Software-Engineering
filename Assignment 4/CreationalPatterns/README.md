@@ -5,6 +5,6 @@ This assignment has two main folders
 
 ## Images
 #### Output
-![OutputImage](images\finaloutput.png)
+![OutputImage](images/finaloutput.png)
 #### Directory
-![DirectoryImage](images\directory.png)
+![DirectoryImage](images/directory.png)
