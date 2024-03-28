@@ -1,4 +1,4 @@
-package com.example;
+package com.example.customer;
 
 public class LoyaltyStatus {
     public double applyDiscount(double totalCost, String status) {

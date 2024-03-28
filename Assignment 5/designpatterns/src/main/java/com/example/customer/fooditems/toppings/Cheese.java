@@ -1,6 +1,6 @@
-package com.example;
+package com.example.customer.fooditems.toppings;
 
-import java.util.List;
+import com.example.customer.fooditems.FoodItem;
 
 public class Cheese implements Topping {
     private FoodItem foodItem;

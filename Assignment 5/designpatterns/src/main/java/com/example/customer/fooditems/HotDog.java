@@ -1,4 +1,4 @@
-package com.example;
+package com.example.customer.fooditems;
 
 public class HotDog implements FoodItem{
     double basePrice = 6.0;

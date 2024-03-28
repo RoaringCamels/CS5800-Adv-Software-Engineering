@@ -2,12 +2,12 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.example.Burger;
-import com.example.Cheese;
-import com.example.CustomerOrder;
-import com.example.FoodItem;
-import com.example.Fries;
-import com.example.LoyaltyStatus;
+import com.example.customer.CustomerOrder;
+import com.example.customer.LoyaltyStatus;
+import com.example.customer.fooditems.Burger;
+import com.example.customer.fooditems.FoodItem;
+import com.example.customer.fooditems.Fries;
+import com.example.customer.fooditems.toppings.Cheese;
 
 public class MainTest {
 

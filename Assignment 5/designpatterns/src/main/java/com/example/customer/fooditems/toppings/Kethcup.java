@@ -1,4 +1,6 @@
-package com.example;
+package com.example.customer.fooditems.toppings;
+
+import com.example.customer.fooditems.FoodItem;
 
 public class Kethcup implements Topping{
     private FoodItem foodItem;

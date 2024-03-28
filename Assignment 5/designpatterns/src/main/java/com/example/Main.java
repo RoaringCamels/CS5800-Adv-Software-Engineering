@@ -1,5 +1,13 @@
 package com.example;
 
+import com.example.customer.CustomerOrder;
+import com.example.customer.LoyaltyStatus;
+import com.example.customer.fooditems.Burger;
+import com.example.customer.fooditems.FoodItem;
+import com.example.customer.fooditems.Fries;
+import com.example.customer.fooditems.toppings.Cheese;
+import com.example.customer.fooditems.toppings.Kethcup;
+
 public class Main {
     public static void main(String[] args) {
         FoodItem burger = new Burger();

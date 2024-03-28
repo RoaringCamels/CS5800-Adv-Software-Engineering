@@ -1,5 +1,7 @@
-package com.example;
+package com.example.customer;
 import java.util.*;
+
+import com.example.customer.fooditems.FoodItem;
 
 public class CustomerOrder {
     private List<FoodItem> items = new ArrayList<>();

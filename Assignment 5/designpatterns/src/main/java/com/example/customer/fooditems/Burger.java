@@ -1,4 +1,4 @@
-package com.example;
+package com.example.customer.fooditems;
 
 public class Burger implements FoodItem{
     private double basePrice = 10.0;
