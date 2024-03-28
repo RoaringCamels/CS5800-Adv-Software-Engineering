@@ -16,7 +16,7 @@ public class MainTest {
         FoodItem burger = new Burger();
         FoodItem burgerWithCheese = new Cheese(burger);
 
-        assertEquals(6.0, burgerWithCheese.getPrice(), 0.01);
+        assertEquals(10.5, burgerWithCheese.getPrice(), 0.01);
         assertEquals("Burger with Cheese", burgerWithCheese.getDescription());
     }
 
@@ -25,7 +25,7 @@ public class MainTest {
         FoodItem fries = new Fries();
         FoodItem friesWithCheese = new Cheese(fries);
 
-        assertEquals(4.0, friesWithCheese.getPrice(), 0.01);
+        assertEquals(4.5, friesWithCheese.getPrice(), 0.01);
         assertEquals("Fries with Cheese", friesWithCheese.getDescription());
     }
 
@@ -38,7 +38,7 @@ public class MainTest {
         order.addItem(burger);
         order.addItem(fries);
 
-        assertEquals(8.0, order.getTotalCost(), 0.01);
+        assertEquals(14.0, order.getTotalCost(), 0.01);
     }
 
     @Test
