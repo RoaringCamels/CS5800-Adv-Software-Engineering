@@ -14,11 +14,11 @@ public class Main {
         customer1.addItem(fries);
 
         double totalCost = customer1.getTotalCost();
-        System.out.println("Total cost before discount: $" + totalCost);
+        System.out.println("Cost without discount: $" + totalCost);
 
         LoyaltyStatus loyaltyStatus = new LoyaltyStatus();
         totalCost = loyaltyStatus.applyDiscount(totalCost, "GOLD");
 
-        System.out.println("Total cost after discount: $" + totalCost);
+        System.out.println("Cost with discount: $" + totalCost);
     }
 }
