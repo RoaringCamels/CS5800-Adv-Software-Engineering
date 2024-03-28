@@ -1,15 +1,23 @@
 package com.example;
 
 public class LoyaltyStatus {
-    public double applyDiscount(double totalCost, boolean isLoyalCustomer){
-        if (isLoyalCustomer){
-            System.out.println("10% Discount");
-            return totalCost * 0.9;
+    public double applyDiscount(double totalCost, String status) {
+        double discount = 0.0;
+        switch (status) {
+            case "REGULAR":
+                discount = 0.0;
+                break;
+            case "GOLD":
+                discount = 0.1;
+                break;
+            case "PLATINUM":
+                discount = 0.15;
+                break;
+            default:
+                break;
         }
-        else{
-            System.out.println("No discount");
-            return totalCost;
-        }
+        return totalCost - (totalCost * discount);
     }
 }
+
 

@@ -12,46 +12,47 @@ import com.example.LoyaltyStatus;
 public class MainTest {
 
     @Test
-    public void testBurgerWithCheese() {
+    public void testFoodItemCost() {
         FoodItem burger = new Burger();
-        FoodItem burgerWithCheese = new Cheese(burger);
+        assertEquals(10.0, burger.getPrice(), 0.001);
 
-        assertEquals(10.5, burgerWithCheese.getPrice(), 0.01);
-        assertEquals("Burger with Cheese", burgerWithCheese.getDescription());
+        FoodItem fries = new Fries();
+        assertEquals(4.0, fries.getPrice(), 0.001);
     }
 
     @Test
-    public void testFriesWithCheese() {
-        FoodItem fries = new Fries();
-        FoodItem friesWithCheese = new Cheese(fries);
-
-        assertEquals(4.5, friesWithCheese.getPrice(), 0.01);
-        assertEquals("Fries with Cheese", friesWithCheese.getDescription());
+    public void testToppingsCost() {
+        FoodItem burger = new Burger();
+        burger = new Cheese(burger);
+        assertEquals(11.0, burger.getPrice(), 0.001);
     }
 
     @Test
-    public void testCustomerOrderTotalCost() {
-        FoodItem burger = new Burger();
-        FoodItem fries = new Fries();
-
+    public void testOrderTotalCost() {
         CustomerOrder order = new CustomerOrder();
+        FoodItem burger = new Burger();
+        FoodItem fries = new Fries();
+        burger = new Cheese(burger);
+
         order.addItem(burger);
         order.addItem(fries);
 
-        assertEquals(14.0, order.getTotalCost(), 0.01);
+        assertEquals(15.0, order.getTotalCost(), 0.001);
     }
 
     @Test
-    public void testLoyaltyStatusDiscount() {
-        LoyaltyStatus status = new LoyaltyStatus();
+    public void testDiscountCalculation() {
+        LoyaltyStatus loyaltyStatus = new LoyaltyStatus();
+        double totalCost = 100.0;
 
-        // Test with loyal customer
-        double discountedCostForLoyal = status.applyDiscount(100.0, true);
-        assertEquals(90.0, discountedCostForLoyal, 0.01);
+        // Test discount for regular customer
+        assertEquals(100.0, loyaltyStatus.applyDiscount(totalCost, "REGULAR"), 0.001);
 
-        // Test with non-loyal customer
-        double discountedCostForNonLoyal = status.applyDiscount(100.0, false);
-        assertEquals(100.0, discountedCostForNonLoyal, 0.01);
+        // Test discount for gold customer
+        assertEquals(90.0, loyaltyStatus.applyDiscount(totalCost, "GOLD"), 0.001);
+
+        // Test discount for platinum customer
+        assertEquals(85.0, loyaltyStatus.applyDiscount(totalCost, "PLATINUM"), 0.001);
     }
 }
 

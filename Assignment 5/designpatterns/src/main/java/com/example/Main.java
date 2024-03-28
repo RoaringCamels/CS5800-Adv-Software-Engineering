@@ -5,21 +5,20 @@ public class Main {
         FoodItem burger = new Burger();
         FoodItem fries = new Fries();
 
-        FoodItem burgerWithCheese = new Cheese(burger);
-        FoodItem friesWithCheese = new Cheese(fries);
+        // Decorator
+        burger = new Cheese(burger);
+        burger = new Kethcup(burger);;
 
         CustomerOrder customer1 = new CustomerOrder();
-        customer1.addItem(burgerWithCheese);
-        customer1.addItem(friesWithCheese);
+        customer1.addItem(burger);
+        customer1.addItem(fries);
 
         double totalCost = customer1.getTotalCost();
+        System.out.println("Total cost before discount: $" + totalCost);
 
-        LoyaltyStatus status = new LoyaltyStatus();
-        boolean isLoyalCustomer = true;
+        LoyaltyStatus loyaltyStatus = new LoyaltyStatus();
+        totalCost = loyaltyStatus.applyDiscount(totalCost, "GOLD");
 
-        double discountedCost = status.applyDiscount(totalCost, isLoyalCustomer);
-
-        System.out.println("Total Cost: $" + totalCost);
-        System.out.println("Discounted Cost: $" + discountedCost);
+        System.out.println("Total cost after discount: $" + totalCost);
     }
 }

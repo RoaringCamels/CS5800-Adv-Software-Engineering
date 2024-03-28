@@ -1,12 +1,10 @@
 package com.example;
 
-import java.util.List;
-
-public class Cheese implements Topping {
+public class Kethcup implements Topping{
     private FoodItem foodItem;
-    private double toppingCost = 1.0;
+    private double toppingCost = 0.5;
 
-    public Cheese(FoodItem foodItem) {
+    public Kethcup(FoodItem foodItem) {
         this.foodItem = foodItem;
     }
 
