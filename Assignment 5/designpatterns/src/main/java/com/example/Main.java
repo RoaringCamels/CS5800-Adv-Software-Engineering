@@ -11,9 +11,9 @@ import com.example.customer.fooditems.toppings.Kethcup;
 
 public class Main {
     public static void main(String[] args) {
-        FoodItem burger = new Burger(); //10
-        FoodItem fries = new Fries(); //4
-        FoodItem hotDog = new HotDog(); //6
+        FoodItem burger = new Burger(); // 10
+        FoodItem fries = new Fries(); // 4
+        FoodItem hotDog = new HotDog(); // 6
 
         burger = new Cheese(burger); // cheese = 1, kethup = 0.5
         burger = new Kethcup(burger);
@@ -32,7 +32,7 @@ public class Main {
         customer1.setLoyaltyStatus(statusCustomer1);
         customer2.setLoyaltyStatus(statusCustomer2);
 
-        System.out.println("Customer 1 total cost: $" + customer1.getTotalCost("REGULAR"));
-        System.out.println("Customer 2 total cost: $" + customer2.getTotalCost("EXECUTIVE"));
+        System.out.println("Customer 1 total cost: $" + customer1.getTotalCost("REGULAR"));// 10 + 1 + 0.5 + 4 = 15.5 with no discount
+        System.out.println("Customer 2 total cost: $" + customer2.getTotalCost("EXECUTIVE"));// 4 with half off discount
     }
 }
