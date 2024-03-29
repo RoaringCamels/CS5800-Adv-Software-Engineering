@@ -10,10 +10,11 @@ public class LoyaltyStatus {
             case "GOLD":
                 discount = 0.1;
                 break;
-            case "PLATINUM":
-                discount = 0.15;
+            case "EXECUTIVE":
+                discount = 0.5;
                 break;
             default:
+                discount = 0.0;
                 break;
         }
         return totalCost - (totalCost * discount);

@@ -37,7 +37,7 @@ public class MainTest {
         order.addItem(burger);
         order.addItem(fries);
 
-        assertEquals(15.0, order.getTotalCost(), 0.001);
+        assertEquals(15.0, order.getTotalCost("REGULAR"), 0.001);
     }
 
     @Test

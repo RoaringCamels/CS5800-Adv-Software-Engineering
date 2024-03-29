@@ -5,28 +5,34 @@ import com.example.customer.LoyaltyStatus;
 import com.example.customer.fooditems.Burger;
 import com.example.customer.fooditems.FoodItem;
 import com.example.customer.fooditems.Fries;
+import com.example.customer.fooditems.HotDog;
 import com.example.customer.fooditems.toppings.Cheese;
 import com.example.customer.fooditems.toppings.Kethcup;
 
 public class Main {
     public static void main(String[] args) {
-        FoodItem burger = new Burger();
-        FoodItem fries = new Fries();
+        FoodItem burger = new Burger(); //10
+        FoodItem fries = new Fries(); //4
+        FoodItem hotDog = new HotDog(); //6
 
-        // Decorator
-        burger = new Cheese(burger);
-        burger = new Kethcup(burger);;
+        burger = new Cheese(burger); // cheese = 1, kethup = 0.5
+        burger = new Kethcup(burger);
+        hotDog = new Kethcup(hotDog);
 
         CustomerOrder customer1 = new CustomerOrder();
         customer1.addItem(burger);
         customer1.addItem(fries);
 
-        double totalCost = customer1.getTotalCost();
-        System.out.println("Cost without discount: $" + totalCost);
+        CustomerOrder customer2 = new CustomerOrder();
+        customer2.addItem(fries);
 
-        LoyaltyStatus loyaltyStatus = new LoyaltyStatus();
-        totalCost = loyaltyStatus.applyDiscount(totalCost, "GOLD");
+        LoyaltyStatus statusCustomer1 = new LoyaltyStatus();
+        LoyaltyStatus statusCustomer2 = new LoyaltyStatus();
 
-        System.out.println("Cost with discount: $" + totalCost);
+        customer1.setLoyaltyStatus(statusCustomer1);
+        customer2.setLoyaltyStatus(statusCustomer2);
+
+        System.out.println("Customer 1 total cost: $" + customer1.getTotalCost("REGULAR"));
+        System.out.println("Customer 2 total cost: $" + customer2.getTotalCost("EXECUTIVE"));
     }
 }
