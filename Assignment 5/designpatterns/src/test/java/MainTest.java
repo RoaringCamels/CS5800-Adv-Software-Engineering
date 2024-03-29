@@ -52,7 +52,7 @@ public class MainTest {
         assertEquals(90.0, loyaltyStatus.applyDiscount(totalCost, "GOLD"), 0.001);
 
         // Test discount for platinum customer
-        assertEquals(85.0, loyaltyStatus.applyDiscount(totalCost, "PLATINUM"), 0.001);
+        assertEquals(50.0, loyaltyStatus.applyDiscount(totalCost, "EXECUTIVE"), 0.001);
     }
 }
 
