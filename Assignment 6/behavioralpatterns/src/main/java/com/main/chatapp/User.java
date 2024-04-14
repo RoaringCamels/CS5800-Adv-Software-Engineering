@@ -5,7 +5,8 @@ public class User{
     private String username;
     private ChatServer chatServer;
     private ChatHistory chatHistory;
-    private MessageMemento memento;
+    private Message lastSentMessage;
+    private MessageMemento lastSentMessageMemento;
 
     public User(ChatServer chatServer){
         this.chatServer = chatServer;
@@ -26,15 +27,20 @@ public class User{
         Message message = new Message(this, Arrays.asList(recipients), messageContent);
         chatHistory.addMessage(message);
         chatServer.sendMessage(message, recipients);
-        saveMessageState(message);
-    }
-
-    public void saveMessageState(Message messageToSave){
-        memento = new MessageMemento(messageToSave);
+        lastSentMessage = message;
     }
 
     public void receiveMessage(Message message) {
         System.out.println(username + " received message: " + message.getMessageContent());
         chatHistory.addMessage(message);
+    }
+
+    public void undoMessage(){
+        if (lastSentMessage != null) {
+            chatHistory.removeMessage(lastSentMessage);
+            lastSentMessage = null;
+        } else {
+            System.out.println("No message to undo.");
+        }
     }
 }

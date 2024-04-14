@@ -1,14 +1,18 @@
 package com.main.chatapp;
 
 class MessageMemento {
-    private Message message;
+    private String message;
+    private long timestamp;
 
-    public MessageMemento(Message message) {
+    public MessageMemento(String message, long timestamp) {
         this.message = message;
+        this.timestamp = timestamp;
     }
 
-    public Message getState() {return message;}
+    public String getMessage() {return message;}
+    public long getTimestamp() {return timestamp;}
 
-    public void setState(Message message){this.message = message;}
+    public void setMessage(String message){this.message = message;}
+    public void setTimestamp(long timestamp) {this.timestamp = timestamp;}
 }
 

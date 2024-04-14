@@ -4,24 +4,11 @@ import java.util.*;
 class ChatHistory {
     private List<Message> messages;
 
-    public ChatHistory() {
-        this.messages = new ArrayList<>();
-    }
+    public ChatHistory() {this.messages = new ArrayList<>();}
 
-    public void addMessage(Message message) {
-        messages.add(message);
-    }
+    public void addMessage(Message message) {messages.add(message);}
 
-    public Message getLastMessage() {
-        if (!messages.isEmpty()) {
-            return messages.get(messages.size() - 1);
-        }
-        return null;
-    }
+    public List<Message> getMessages() {return messages;}
 
-    public void removeLastMessage() {
-        if (!messages.isEmpty()) {
-            messages.remove(messages.size() - 1);
-        }
-    }
+    public void removeMessage(Message message) {messages.remove(message);}
 }

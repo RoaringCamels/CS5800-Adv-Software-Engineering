@@ -37,4 +37,12 @@ class ChatServer {
         List<String> blockedList = blockedUsers.get(recipient);
         return blockedList != null && blockedList.contains(sender);
     }
+
+    public void displayChatHistory(User user) {
+        ChatHistory chatHistory = user.getChatHistory();
+        System.out.println("Chat History for " + user.getUsername() + ":");
+        for (Message message : chatHistory.getMessages()) {
+            System.out.println(message.getSender().getUsername() + ": " + message.getMessageContent());
+        }
+    }
 }
