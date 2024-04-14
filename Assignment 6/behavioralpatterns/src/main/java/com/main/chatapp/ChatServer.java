@@ -15,15 +15,13 @@ class ChatServer {
     public Collection<User> getUsers() {return usersList;}
 
 
-    public void sendMessage(Message message) {
+    public void sendMessage(Message message, User... recipients) {
         User sender = message.getSender();
-        List<User> recipients = message.getRecipients();
 
         for (User recipient : recipients) {
-            if (!isUserBlocked(recipient.getUsername(), sender.getUsername())) {
+            if (recipient != sender && !isUserBlocked(recipient.getUsername(), sender.getUsername())) {
                 recipient.receiveMessage(message);
             }
-            else{System.out.println("Blocked");}
         }
 
         if (sender != null) {

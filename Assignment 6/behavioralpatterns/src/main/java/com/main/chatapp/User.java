@@ -22,11 +22,10 @@ public class User{
     public void setChatServer(ChatServer chatServer) {this.chatServer = chatServer;}
     public void setChatHistory(ChatHistory chatHistory) {this.chatHistory = chatHistory;}
 
-    public void sendMessage(String messageContent) {
-        List<User> recipients = new ArrayList<>(chatServer.getUsers());
-        Message message = new Message(this, recipients, messageContent);
+    public void sendMessage(String messageContent, User... recipients) {
+        Message message = new Message(this, Arrays.asList(recipients), messageContent);
         chatHistory.addMessage(message);
-        chatServer.sendMessage(message);
+        chatServer.sendMessage(message, recipients);
         saveMessageState(message);
     }
 
