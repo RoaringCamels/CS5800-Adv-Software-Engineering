@@ -2,19 +2,21 @@ package com.main.chatapp;
 import java.util.*;
 
 class ChatServer {
-    private Map<String, User> usersMap;
+    private List<User> usersList;
     private Map<String, List<String>> blockedUsers;
 
     public ChatServer() {
-        usersMap = new HashMap<>();
+        usersList = new ArrayList<>();
         blockedUsers = new HashMap<>();
     }
 
-    public void addUser(User user) {usersMap.put(user.getUsername(), user);}
-    public void removeUser(User user) {usersMap.remove(user.getUsername());}
+    public void addUser(User user) {usersList.add(user);}
+    public void removeUser(User user) {usersList.remove(user);}
+    public Collection<User> getUsers() {return usersList;}
+
 
     public void sendMessage(Message message) {
-        User sender = usersMap.get(message.getSender());
+        User sender = message.getSender();
         List<User> recipients = message.getRecipients();
 
         for (User recipient : recipients) {

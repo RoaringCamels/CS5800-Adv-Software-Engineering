@@ -1,17 +1,17 @@
 package com.main.chatapp;
-import java.util.*;
 
 public class Driver {
     public static void main(String[] args) throws Exception {
         ChatServer server = new ChatServer();
-        server.addUser()
-        User user1 = new User("Adam", server);
-        User user2 = new User("Bob", server);
-        User user3 = new User("Charles", server);
+        User user1 = new User(server);
+        User user2 = new User(server);
+        User user3 = new User(server);
 
-        user3.sendMessage(List.of("Adam", "Bob"), "This is Charles");
-        user1.sendMessage(List.of("Charles"), "Hello this is Adam");
-        user2.sendMessage(List.of("Charles"), "Hello this is Bob");
+        user1.setUsername("Bill");
+        user2.setUsername("Bob");
+        user3.setUsername("Beremy");
+
+        user1.sendMessage("Hello everyone!");
         System.out.println("----------------------");
         
     }
