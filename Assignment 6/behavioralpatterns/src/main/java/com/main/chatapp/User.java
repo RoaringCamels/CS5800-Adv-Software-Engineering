@@ -6,7 +6,6 @@ public class User{
     private ChatServer chatServer;
     private ChatHistory chatHistory;
     private Message lastSentMessage;
-    private MessageMemento lastSentMessageMemento;
 
     public User(ChatServer chatServer){
         this.chatServer = chatServer;
