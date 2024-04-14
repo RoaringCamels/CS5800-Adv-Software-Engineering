@@ -1,4 +1,5 @@
 package com.main.chatapp;
+import java.util.*;
 
 public class Driver {
     public static void main(String[] args) throws Exception {
@@ -29,5 +30,19 @@ public class Driver {
 
         System.out.println("\n===== Viewing Chat History =====");
         server.displayChatHistory(user2);
+
+        System.out.println("\n===== Iterating through Chat History =====");
+        iterateChatHistory(user1);
     }
+
+    private static void iterateChatHistory(User user) {
+        ChatHistory chatHistory = user.getChatHistory();
+        System.out.println("===== Chat History for " + user.getUsername() + " =====");
+        Iterator<Message> iterator = chatHistory.iterator(user);
+        while (iterator.hasNext()) {
+            Message message = iterator.next();
+            System.out.println(message.getSender() + ": " + message.getMessageContent());
+        }
+    }
+    
 }

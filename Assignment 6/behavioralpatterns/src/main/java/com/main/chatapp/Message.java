@@ -40,4 +40,10 @@ public class Message {
         this.messageContent = memento.getMessage();
         this.timestamp = memento.getTimestamp();
     }
+
+    @Override
+    public String toString() {
+        return sender + ": " + messageContent;
+    }
+
 }

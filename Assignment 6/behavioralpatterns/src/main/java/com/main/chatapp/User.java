@@ -1,7 +1,7 @@
 package com.main.chatapp;
 import java.util.*;
 
-public class User{
+public class User implements IterableByUser{
     private String username;
     private ChatServer chatServer;
     private ChatHistory chatHistory;
@@ -42,4 +42,15 @@ public class User{
             System.out.println("No message to undo.");
         }
     }
+
+    @Override
+    public Iterator<Message> iterator(User userToSearchWith) {
+        return chatHistory.iterator(userToSearchWith);
+    }
+
+    @Override
+    public String toString() {
+        return username;
+    }
+
 }
