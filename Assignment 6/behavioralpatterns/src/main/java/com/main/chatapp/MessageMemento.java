@@ -1,6 +1,6 @@
 package com.main.chatapp;
 
-class MessageMemento {
+public class MessageMemento {
     private String message;
     private long timestamp;
 

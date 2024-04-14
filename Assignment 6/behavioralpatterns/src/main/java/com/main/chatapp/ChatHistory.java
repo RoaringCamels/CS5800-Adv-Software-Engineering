@@ -1,7 +1,7 @@
 package com.main.chatapp;
 import java.util.*;
 
-class ChatHistory implements IterableByUser{
+public class ChatHistory implements IterableByUser{
     private List<Message> messages;
 
     public ChatHistory() {this.messages = new ArrayList<>();}

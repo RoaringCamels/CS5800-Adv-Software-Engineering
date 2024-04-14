@@ -1,7 +1,7 @@
 package com.main.chatapp;
 import java.util.*;
 
-class ChatServer {
+public class ChatServer {
     private List<User> usersList;
     private Map<String, List<String>> blockedUsers;
 
@@ -33,7 +33,7 @@ class ChatServer {
         blockedUsers.computeIfAbsent(blocker, k -> new ArrayList<>()).add(blockedUser);
     }
 
-    private boolean isUserBlocked(String recipient, String sender) {
+    public boolean isUserBlocked(String recipient, String sender) {
         List<String> blockedList = blockedUsers.get(recipient);
         return blockedList != null && blockedList.contains(sender);
     }
