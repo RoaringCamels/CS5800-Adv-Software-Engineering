@@ -34,10 +34,18 @@ public class User implements IterableByUser{
         chatHistory.addMessage(message);
     }
 
-    public void undoMessage(){
+    public void undoMessage() {
         if (lastSentMessage != null) {
+            MessageMemento memento = lastSentMessage.createMemento();
+            
             chatHistory.removeMessage(lastSentMessage);
             lastSentMessage = null;
+
+            System.out.println("Message undone.");
+
+            System.out.println("Restoring message from memento...");
+            lastSentMessage = new Message(this, new ArrayList<>(), "");
+            lastSentMessage.restoreFromMomento(memento);
         } else {
             System.out.println("No message to undo.");
         }
