@@ -1,13 +1,152 @@
-@startuml aggregationObjectDiagram
+@startuml diagram1
 
-class Driver{
-    - testDocument: Document
+object Document
+object testDocument {
+    content = "HelloWorldCS5800"
 }
 
-object Document{
-    + addCharacter(char: char, font: String, color: String, size: int)
+note right of testDocument
+    try {
+        testDocument.saveToFile("test.txt");
+        System.out.println("Saved Document as test.txt");
+    } catch(IOException e) {
+        System.out.println("Failed on Save");
+    }
+end note
+
+Class Driver {
+    main()
 }
 
-Driver --> Document: creates
+object Character1 {
+    character = 'H'
+    font = "Arial"
+    color = "Black"
+    size = 16
+}
+
+object Character2 {
+    character = 'e'
+    font = "Arial"
+    color = "Black"
+    size = 14
+}
+
+object Character3 {
+    character = 'l'
+    font = "Arial"
+    color = "Black"
+    size = 14
+}
+
+object Character4 {
+    character = 'l'
+    font = "Arial"
+    color = "Black"
+    size = 14
+}
+
+object Character5 {
+    character = 'o'
+    font = "Arial"
+    color = "Black"
+    size = 14
+}
+
+object Character6 {
+    character = 'W'
+    font = "Arial"
+    color = "Black"
+    size = 14
+}
+
+object Character7 {
+    character = 'o'
+    font = "Arial"
+    color = "Black"
+    size = 14
+}
+
+object Character8 {
+    character = 'r'
+    font = "Arial"
+    color = "Black"
+    size = 14
+}
+
+object Character9 {
+    character = 'l'
+    font = "Arial"
+    color = "Black"
+    size = 14
+}
+
+object Character10 {
+    character = 'd'
+    font = "Arial"
+    color = "Black"
+    size = 14
+}
+
+object Character11 {
+    character = 'C'
+    font = "Verdana"
+    color = "Blue"
+    size = 18
+}
+
+object Character12 {
+    character = 'S'
+    font = "Verdana"
+    color = "Blue"
+    size = 18
+}
+
+object Character13 {
+    character = '5'
+    font = "Verdana"
+    color = "Red"
+    size = 12
+}
+
+object Character14 {
+    character = '8'
+    font = "Verdana"
+    color = "Red"
+    size = 12
+}
+
+object Character15 {
+    character = '0'
+    font = "Verdana"
+    color = "Red"
+    size = 12
+}
+
+object Character16 {
+    character = '0'
+    font = "Verdana"
+    color = "Red"
+    size = 12
+}
+
+Driver --> Document
+Document --> testDocument
+testDocument --> Character1
+testDocument --> Character2
+testDocument --> Character3
+testDocument --> Character4
+testDocument --> Character5
+testDocument --> Character6
+testDocument --> Character7
+testDocument --> Character8
+testDocument --> Character9
+testDocument --> Character10
+testDocument --> Character11
+testDocument --> Character12
+testDocument --> Character13
+testDocument --> Character14
+testDocument --> Character15
+testDocument --> Character16
 
 @enduml

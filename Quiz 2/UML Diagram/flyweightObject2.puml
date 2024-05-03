@@ -1,0 +1,41 @@
+@startuml diagram2
+
+Class Driver {
+    main()
+}
+
+object readDocumentVerify
+
+note right of readDocumentVerify
+    try {
+        readDocumentVerify.loadFromFile("test.txt");
+        System.out.println("Loaded Document from test.txt");
+    } catch (IOException e) {
+        System.out.println("Failed on Load");
+    }
+end note
+
+object Document
+
+object CharacterPropertyH {
+    index = 0
+    font = "Calibri"
+    color = "Blue"
+    size = 99
+}
+
+object CharacterPropertyW {
+    index = 6
+    font = "Calibri"
+    color = "Blue"
+    size = 99
+}
+
+Driver --> Document
+Document --> readDocumentVerify
+readDocumentVerify --> CharacterPropertyH: editCharacterProperties
+readDocumentVerify --> CharacterPropertyW
+
+
+
+@enduml

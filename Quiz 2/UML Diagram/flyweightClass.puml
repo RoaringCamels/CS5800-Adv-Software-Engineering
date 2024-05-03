@@ -1,43 +1,45 @@
 @startuml aggregationObjectDiagram
 
-class Driver{
-    + main(args: String[]):void
-}
-
-class Character{
+class Character {
     - character: char
-    - characterProperty: CharacterProperties 
-    + setCharacter(char character)
-    + setCharacterProperty(CharacterProperties:characterProperty)
+    - characterProperty: CharacterProperties
+    + Character(char, CharacterProperties)
+    + setCharacter(char)
+    + setCharacterProperty(CharacterProperties)
     + getCharacter(): char
     + getFont(): String
     + getColor(): String
     + getSize(): int
 }
 
-class CharacterProperties{
-   - font: String
-   - color: String
-   - size: int
-   + getFont(): String
-   + getColor(): String
-   + getSize(): int
+class CharacterProperties {
+    - font: String
+    - color: String
+    - size: int
+    + CharacterProperties(String, String, int)
+    + getFont(): String
+    + getColor(): String
+    + getSize(): int
 }
 
-class CharacterPropertiesFactory{
-     - flyweights: Map<String, CharacterProperties
-    + setAndRetrieveFlyweightCharacterProperties(String, font, String, color, int size)
+class CharacterPropertiesFactory {
+    - flyweights: Map<String, CharacterProperties>
+    + setAndRetrieveFlyweightCharacterProperties(String, String, int): CharacterProperties
     + sizeOfMap(): int
 }
 
-class Document{
-    + addCharacter(char c, String font, String color, int size)
-    + editCharacterProperties(int index, String font, String color, int size)
-    + saveToFile(String filename)
-    + loadToFile(String filename)
+class Document {
+    - characters: List<Character>
+    - propertiesFactory: CharacterPropertiesFactory
+    + addCharacter(char, String, String, int)
+    + editCharacterProperties(int, String, String, int)
+    + saveToFile(String): void
+    + loadFromFile(String): void
 }
 
-
-Character --> CharacterProperties: implements
+Character "1" --> "1" CharacterProperties
+Character o-- CharacterPropertiesFactory
+Document o-- "1" CharacterPropertiesFactory
+Document o-- "0..*" Character
 
 @enduml
