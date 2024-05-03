@@ -1,0 +1,13 @@
+@startuml aggregationObjectDiagram
+
+class Driver{
+    - testDocument: Document
+}
+
+object Document{
+    + addCharacter(char: char, font: String, color: String, size: int)
+}
+
+Driver --> Document: creates
+
+@enduml

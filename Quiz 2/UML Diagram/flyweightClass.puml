@@ -1,0 +1,43 @@
+@startuml aggregationObjectDiagram
+
+class Driver{
+    + main(args: String[]):void
+}
+
+class Character{
+    - character: char
+    - characterProperty: CharacterProperties 
+    + setCharacter(char character)
+    + setCharacterProperty(CharacterProperties:characterProperty)
+    + getCharacter(): char
+    + getFont(): String
+    + getColor(): String
+    + getSize(): int
+}
+
+class CharacterProperties{
+   - font: String
+   - color: String
+   - size: int
+   + getFont(): String
+   + getColor(): String
+   + getSize(): int
+}
+
+class CharacterPropertiesFactory{
+     - flyweights: Map<String, CharacterProperties
+    + setAndRetrieveFlyweightCharacterProperties(String, font, String, color, int size)
+    + sizeOfMap(): int
+}
+
+class Document{
+    + addCharacter(char c, String font, String color, int size)
+    + editCharacterProperties(int index, String font, String color, int size)
+    + saveToFile(String filename)
+    + loadToFile(String filename)
+}
+
+
+Character --> CharacterProperties: implements
+
+@enduml
