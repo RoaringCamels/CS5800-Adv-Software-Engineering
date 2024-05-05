@@ -1,4 +1,4 @@
-package com.part1;
+package com.vendingmachine;
 
 public class Main {
     public static void main(String[] args) {
