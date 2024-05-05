@@ -1,5 +1,6 @@
 package com.vendingmachine;
 
-public class SnackDispenserHandler {
-    
+public interface SnackDispenserHandler {
+    void setNextHandler(SnackDispenserHandler handler);
+    void handleRequest(Snack snack, double amountInserted);
 }

@@ -1,0 +1,83 @@
+@startuml A8
+
+class Snack {
+  -name: String
+  -price: double
+  -quantity: int
+  +Snack(name: String, price: double, quantity: int)
+  +getName(): String
+  +getPrice(): double
+  +getQuantity(): int
+  +reduceQuantity(amount: int): void
+}
+
+interface StateOfVendingMachine {
+  +insertMoney(amount: double): void
+  +selectSnack(snackName: String): void
+  +dispenseSnack(): void
+}
+
+interface SnackDispenserHandler {
+  +setNextHandler(handler: SnackDispenserHandler): void
+  +handleRequest(snack: Snack, amountInserted: double): void
+}
+
+class SnackDispenser {
+  -nextHandler: SnackDispenserHandler
+  +setNextHandler(handler: SnackDispenserHandler): void
+  +handleRequest(snack: Snack, amountInserted: double): void
+}
+
+class VendingMachine {
+  -state: StateOfVendingMachine
+  -snacks: List<Snack>
+  -snackDispenser: SnackDispenser
+  +VendingMachine(snacks: List<Snack>)
+  +setState(state: StateOfVendingMachine): void
+  +getSnacks(): List<Snack>
+  +dispenseSnack(): void
+  +getSnackDispenser(): SnackDispenser
+}
+
+class IdleState {
+  -vendingMachine: VendingMachine
+  +IdleState(vendingMachine: VendingMachine)
+  +insertMoney(amount: double): void
+  +selectSnack(snackName: String): void
+  +dispenseSnack(): void
+}
+
+class WaitingForMoneyState {
+  -vendingMachine: VendingMachine
+  -selectedSnack: Snack
+  +WaitingForMoneyState(vendingMachine: VendingMachine, selectedSnack: Snack)
+  +insertMoney(amount: double): void
+  +selectSnack(snackName: String): void
+  +dispenseSnack(): void
+}
+
+class DispensingSnackState {
+  -vendingMachine: VendingMachine
+  -selectedSnack: Snack
+  -amountInserted: double
+  +DispensingSnackState(vendingMachine: VendingMachine, selectedSnack: Snack, amountInserted: double)
+  +insertMoney(amount: double): void
+  +selectSnack(snackName: String): void
+  +dispenseSnack(): void
+}
+
+VendingMachine --> StateOfVendingMachine
+VendingMachine --> SnackDispenser
+VendingMachine "1" *-- "0..*" Snack
+VendingMachine "1" *-- "1" SnackDispenser
+
+StateOfVendingMachine <|.. IdleState
+StateOfVendingMachine <|.. WaitingForMoneyState
+StateOfVendingMachine <|.. DispensingSnackState
+
+SnackDispenserHandler <|.. SnackDispenser
+SnackDispenserHandler <|-- IdleState
+SnackDispenserHandler <|-- WaitingForMoneyState
+SnackDispenserHandler <|-- DispensingSnackState
+
+@enduml

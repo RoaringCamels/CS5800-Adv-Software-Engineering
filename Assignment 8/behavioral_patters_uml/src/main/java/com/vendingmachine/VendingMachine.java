@@ -1,23 +1,43 @@
 package com.vendingmachine;
 
+import java.util.List;
+
+import com.vendingmachine.States.Idle;
+
 public class VendingMachine implements StateOfVendingMachine{
+    private StateOfVendingMachine state;
+    private List<Snack> snacks;
+    private SnackDispenserHandler snackDispenser;
 
-    @Override
-    public void insertCash(double cashAmount) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insertCash'");
+    public VendingMachine(List<Snack> snacks) {
+        this.snacks = snacks;
+        snackDispenser = new SnackDispenser();
+        state = new Idle(this);
     }
 
-    @Override
-    public void selectSnach(String snackName) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'selectSnach'");
+    public void setState(StateOfVendingMachine state) {
+        this.state = state;
     }
 
-    @Override
+    public List<Snack> getSnacks() {
+        return snacks;
+    }
+
     public void dispenseSnack() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'dispenseSnack'");
+        state.dispenseSnack();
     }
-    
+
+    public SnackDispenserHandler getSnackDispenser() {
+        return snackDispenser;
+    }
+
+    @Override
+    public void insertCash(double amount) {
+        state.insertCash(amount);
+    }
+
+    @Override
+    public void selectSnack(String snackName) {
+        state.selectSnack(snackName);
+    }
 }
